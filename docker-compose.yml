@@ -1,0 +1,35 @@
+version: "3"
+services:
+  wmshop:
+    container_name: wmshop
+    image: prestashop/prestashop
+    ports:
+      - "80:80"
+    links:
+      - shopdb
+    restart: always
+    volumes:
+      - /var/www/html
+  dbadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: dbadmin
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_USERNAME=ndf
+      - MYSQL_PASSWORD=wm2020
+    links:
+      - shopdb:db
+    restart: always
+    ports:
+      - 8080:80
+  shopdb:
+    container_name: shopdb
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_USERNAME=ndf
+      - MYSQL_PASSWORD=wm2020
+    volumes:
+      - /var/lib/mysql

@@ -14,9 +14,9 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: dbadmin
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_USERNAME=ndf
-      - MYSQL_PASSWORD=wm2020
+      - MYSQL_ROOT_PASSWORD=""
+      - MYSQL_USERNAME=""
+      - MYSQL_PASSWORD=""
     links:
       - shopdb:db
     restart: always
@@ -28,8 +28,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_USERNAME=ndf
-      - MYSQL_PASSWORD=wm2020
+      - MYSQL_ROOT_PASSWORD=""
+      - MYSQL_USERNAME=""
+      - MYSQL_PASSWORD=""
     volumes:
       - /var/lib/mysql
